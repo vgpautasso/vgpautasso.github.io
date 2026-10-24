@@ -7,11 +7,11 @@ export function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <div className="relative min-h-screen bg-[#08090d] text-zinc-100 selection:bg-indigo-500 selection:text-white">
+    <div className="relative min-h-screen bg-[#08090d] text-zinc-100 selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
       <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(to_right,#1f293712_1px,transparent_1px),linear-gradient(to_bottom,#1f293712_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-indigo-600/15 blur-[140px] pointer-events-none rounded-full" />
 
-      <nav className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex items-center justify-between">
+      <nav className="relative max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-600 to-purple-500 text-sm font-extrabold text-white shadow-md shadow-indigo-500/20">
             GP
@@ -20,13 +20,35 @@ export function App() {
             gisel pautasso
           </span>
         </div>
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-xs font-mono font-medium">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          Disponible para proyectos
+
+        <div className="flex items-center gap-4 sm:gap-6">
+          <a
+            href="https://github.com/vgpautasso"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-zinc-400 hover:text-white transition-colors"
+          >
+            GitHub ↗
+          </a>
+          <a
+            href="https://linkedin.com/in/giselpautasso"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono text-zinc-400 hover:text-white transition-colors"
+          >
+            LinkedIn ↗
+          </a>
+          <a
+            href={`${import.meta.env.BASE_URL}cv-gisel-pautasso.pdf`}
+            download="CV_Gisel_Pautasso.pdf"
+            className="text-xs font-mono px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 text-zinc-200 hover:border-zinc-700 hover:text-white transition-colors"
+          >
+            CV ↓
+          </a>
         </div>
       </nav>
 
-      <main className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <main className="relative max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 flex-1">
         <header className="max-w-3xl mx-auto text-center mb-16 pt-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-300 text-xs font-mono font-medium mb-6">
             <span>👋</span>
@@ -45,8 +67,8 @@ export function App() {
           </p>
         </header>
 
-        <div className="flex items-center justify-between pb-6 mb-8 border-b border-zinc-800/80">
-          <h2 className="text-lg font-semibold tracking-tight text-zinc-200">
+        <div className="flex items-center justify-between pb-4 mb-8 border-b border-zinc-800/80">
+          <h2 className="text-sm font-mono uppercase tracking-wider text-zinc-400">
             Proyectos seleccionados
           </h2>
           <span className="text-xs font-mono text-zinc-500">
@@ -68,6 +90,11 @@ export function App() {
           ))}
         </section>
       </main>
+
+      <footer className="relative max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-zinc-900/80 flex items-center justify-between text-xs font-mono text-zinc-600">
+        <span>© 2026 Gisel Pautasso</span>
+        <span>Río Cuarto, Argentina</span>
+      </footer>
 
       <ProjectModal
         project={selectedProject}
